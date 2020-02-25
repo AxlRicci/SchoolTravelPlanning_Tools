@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProfileData from '../data/schoolProfiles.json';
 
 
 export class SchoolList extends React.Component {
@@ -18,7 +17,6 @@ export class SchoolList extends React.Component {
         console.log("no such property", value);
       }
     });
-
     // Render out cards for schools in snapshot.
     let renderList = objArray.map(schoolProfile => {
       return <>
@@ -28,7 +26,7 @@ export class SchoolList extends React.Component {
                 <h5 className="card-title">{schoolProfile.name}</h5>
                 <h6 className="card-subtitle text-muted">{schoolProfile.schoolBoard}</h6>
                 <p className="card-text mb-2 text-muted">{schoolProfile.address}</p>
-                <Link to={`/SchoolProfile/${schoolProfile.name}`}>
+                <Link to={`/SchoolProfile/${schoolProfile.id}`}>
                   <button href="#" className="btn btn-primary">Details</button>
                 </Link>
               </div>
