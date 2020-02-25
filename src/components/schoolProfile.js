@@ -11,10 +11,10 @@ export class SchoolProfile extends React.Component {
   }
 
   defineSchool() {
-    if (this.props.profiles.hasOwnProperty(this.props.match.params.name)){
-      this.setState(this.props.profiles[this.props.match.params.name]);
-    } else {
-      console.log("Waiting on DB to set state..");
+    if (this.props.profiles.schoolProfiles === undefined){
+      console.log("waiting on DB to set state...")
+    } else if (this.props.profiles.schoolProfiles.hasOwnProperty(this.props.match.params.id)){
+      this.setState(this.props.profiles.schoolProfiles[this.props.match.params.id]);
     }
   }
 
@@ -51,8 +51,6 @@ export class SchoolProfile extends React.Component {
     let schoolPrograms = [];
     let programTitles = Object.keys(this.state);
     let programValues = Object.values(this.state);
-    console.log(programTitles);
-    console.log(programValues);
     for (let i = 0; i < programTitles.length; i++){
       if (programValues[i] === true){
         let regex = /(?=[A-Z0-9])/;
@@ -66,13 +64,11 @@ export class SchoolProfile extends React.Component {
         schoolPrograms.push(outName);
       }
     }
-    console.log(schoolPrograms);
     return schoolPrograms;
   }
   
   programCardRender() {
     let programs = this.programsCompleted();
-    console.log(programs);
     let outArr = programs.map((program, index) => {
       return <>
         <div class="col-sm-6">
@@ -88,13 +84,6 @@ export class SchoolProfile extends React.Component {
      });
     return outArr
   }
-
-
-
-
-
-
-
 
   render () {
     return(

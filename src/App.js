@@ -13,15 +13,16 @@ import './App.css';
 class App extends React.Component {
   constructor () {
     super();
-    this.state = {}
+    this.state = {
+    }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchDatabase();
   }
 
   fetchDatabase() {
-    let ref = firebase.database().ref ('/1jXrk6uXX580gHV1TZAHoWrH_UzkJnkLE3TdAGR4qD0s/schoolProfiles/');
+    let ref = firebase.database().ref ('/1jXrk6uXX580gHV1TZAHoWrH_UzkJnkLE3TdAGR4qD0s/');
     ref.on('value', snap => {
       const state = snap.val();
       this.setState(state);
@@ -30,7 +31,6 @@ class App extends React.Component {
   }
 
   render () {
-    //console.log(this.state)
     return (
       <Router>
         <div className='App'>
@@ -38,7 +38,7 @@ class App extends React.Component {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/SchoolList' render={props => <SchoolList profiles={this.state} {...props}/>} />
-            <Route path='/SchoolProfile/:name' render={props => <SchoolProfile profiles={this.state} {...props}/>}/>
+            <Route path='/SchoolProfile/:id' render={props => <SchoolProfile profiles={this.state} {...props}/>}/>
             <Route path='/dbTest' component={SchoolSelector} />
           </Switch>
         </div>
