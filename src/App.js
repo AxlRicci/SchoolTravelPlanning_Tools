@@ -1,25 +1,50 @@
 import React from 'react';
-import Nav from './components/nav';
-import Home from './components/home';
-import SchoolList from './components/schoolList';
+import * as firebase from 'firebase';
+import { Nav } from './components/Nav';
+import { Home } from './components/Home';
+import { SchoolList } from './components/SchoolList';
+import { SchoolSelector } from './components/SchoolSelector';
 import SchoolProfile from './components/schoolProfile';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import './App.css';
 
-function App() {
-  return (
-    <Router>
-      <div className='App'>
-        <Nav />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/SchoolList' component={SchoolList} />
-          <Route path='/SchoolProfile/:name' component={SchoolProfile}/>
-        </Switch>
-      </div>
-    </Router>
-  );
+
+class App extends React.Component {
+  constructor () {
+    super();
+    this.state = {}
+  }
+
+  componentWillMount() {
+    this.fetchDatabase();
+  }
+
+  fetchDatabase() {
+    let ref = firebase.database().ref ('/1jXrk6uXX580gHV1TZAHoWrH_UzkJnkLE3TdAGR4qD0s/schoolProfiles/');
+    ref.on('value', snap => {
+      const state = snap.val();
+      this.setState(state);
+    });
+    console.log('Data Retrieved');
+  }
+
+  render () {
+    //console.log(this.state)
+    return (
+      <Router>
+        <div className='App'>
+          <Nav />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/SchoolList' render={props => <SchoolList profiles={this.state} {...props}/>} />
+            <Route path='/SchoolProfile/:name' render={props => <SchoolProfile profiles={this.state} {...props}/>}/>
+            <Route path='/dbTest' component={SchoolSelector} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default App;
+export default App
