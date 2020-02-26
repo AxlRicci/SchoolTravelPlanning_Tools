@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 export class SchoolList extends React.Component {
 
   schoolListRender() {
-    if (this.props.profiles.schoolProfiles === undefined){
+    if (this.props.profiles === undefined){
       console.log("waiting for DB to update state")
     } else {
       let objArray = [];
-      let keys = Object.keys(this.props.profiles.schoolProfiles);
+      let keys = Object.keys(this.props.profiles);
       keys.forEach(value => {
-        if (this.props.profiles.schoolProfiles.hasOwnProperty(value)){
-          objArray.push(this.props.profiles.schoolProfiles[value]);
+        if (this.props.profiles.hasOwnProperty(value)){
+          objArray.push(this.props.profiles[value]);
         } else {
           console.log("no such property", value);
         }

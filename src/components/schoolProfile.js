@@ -3,7 +3,7 @@ import React from 'react';
 export class SchoolProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   componentWillMount() {
@@ -11,10 +11,11 @@ export class SchoolProfile extends React.Component {
   }
 
   defineSchool() {
-    if (this.props.profiles.schoolProfiles === undefined){
+    if (this.props.profiles === undefined){
       console.log("waiting on DB to set state...")
-    } else if (this.props.profiles.schoolProfiles.hasOwnProperty(this.props.match.params.id)){
-      this.setState(this.props.profiles.schoolProfiles[this.props.match.params.id]);
+    } else if (this.props.profiles.hasOwnProperty(this.props.match.params.id)){
+      this.setState(this.props.profiles[this.props.match.params.id]);
+      console.log(this.state)
     }
   }
 
@@ -47,42 +48,16 @@ export class SchoolProfile extends React.Component {
     </>
   }
 
-  programsCompleted() {
-    let schoolPrograms = [];
-    let programTitles = Object.keys(this.state);
-    let programValues = Object.values(this.state);
-    for (let i = 0; i < programTitles.length; i++){
-      if (programValues[i] === true){
-        let regex = /(?=[A-Z0-9])/;
-        let splitTitle = programTitles[i].split(regex);
-        let newTitle = [];
-        for (let j = 0; j < splitTitle.length; j++){
-          let capitalized = splitTitle[j].charAt(0).toUpperCase();
-          newTitle.push(capitalized + splitTitle[j].slice(1));
-        }
-        let outName = newTitle.join(' ');
-        schoolPrograms.push(outName);
+  //TODO: find out which programs are completed at a each school. add objects to list and render out cards.
+  cardCreator() {
+    let completed = [];
+    let programs = Object.keys(this.state.stpInterventions);
+    for (let i = 0; i < programs.length; i++){
+      if (this.state.stpInterventions[programs[i]].completed === true){
+        completed.push(this.state.stpInterventions[programs[i]]);
       }
     }
-    return schoolPrograms;
-  }
-  
-  programCardRender() {
-    let programs = this.programsCompleted();
-    let outArr = programs.map((program, index) => {
-      return <>
-        <div class="col-sm-6">
-          <div class="card mx-auto" style={{width: 45 + 'vw'}}>
-            <img src="..." class="card-img-top" alt="..."></img>
-            <div class="card-body">
-              <h5 class="card-title">{program}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-      </>
-     });
-    return outArr
+    console.log(completed); 
   }
 
   render () {
@@ -96,7 +71,7 @@ export class SchoolProfile extends React.Component {
           <h3>School Travel Planning Interventions</h3>
         </div>
         <div class="row">
-          {this.programCardRender()}
+          {this.cardCreator()} 
         </div>
     </div>
     )
