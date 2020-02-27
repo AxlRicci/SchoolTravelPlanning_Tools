@@ -61,7 +61,9 @@ class App extends React.Component {
           let iWalkDay = {
             'name': 'iWalk Day',
             'completed': firebase.schoolProfiles[currentKey].iWalkDay,
-            'date': firebase.schoolProfiles[currentKey].iWalkDayDate
+            'date': firebase.schoolProfiles[currentKey].iWalkDayDate,
+            'desc': firebase.schoolProfiles[currentKey].iWalkDayDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].iWalkDayCustomDesc
           }
           let winterWalkDay = {
             'name': 'Winter Walk Day',
@@ -104,11 +106,13 @@ class App extends React.Component {
           let cyclingIntoTheFuture = {
             'name': 'Cycling Into The Future',
             'completed': firebase.schoolProfiles[currentKey].cyclingIntoTheFuture,
-            'date': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDate
+            'date': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDate,
+            'desc': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDesc
           }
           let standingFootPatrol = {
             'name': 'CAA Standing Foot Patrol',
-            'completed': firebase.schoolProfiles[currentKey].standingFootPatrol
+            'completed': firebase.schoolProfiles[currentKey].standingFootPatrol,
+            'desc': firebase.supportPrograms['Standing Foot Patrol'].programDescription
           }
           // group stp intervention data into proper programs
           let stpInterventions = {
@@ -155,7 +159,8 @@ class App extends React.Component {
             'parkingStatus': firebase.schoolProfiles[currentKey].parkingStatus,
             'parkingLocation': firebase.schoolProfiles[currentKey].parkingLocation,
             'pedestrianInfrastructureDesc': firebase.schoolProfiles[currentKey].pedestrianInfrastructureDesc,
-            'stpInterventions': stpInterventions
+            'stpInterventions': stpInterventions,
+            'stpInterventionDescriptions': firebase.supportPrograms
           }
           state[[currentKey]] = data 
         }

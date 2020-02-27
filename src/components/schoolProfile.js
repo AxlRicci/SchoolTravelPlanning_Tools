@@ -30,8 +30,8 @@ export class SchoolProfile extends React.Component {
 
   profileOverview() {
     return <>
-      <div className="col-sm-6">
-        <div className="card-body" style={{width: 40 + 'vw'}}>
+      <div className="col-sm-12">
+        <div className="card-body">
           <h3 className="card-title">Overview</h3>
             <p>
               {this.state.name} is a {this.state.type} {this.state.grades} school that comprises of roughly {this.state.studentCount} students. About {this.state.busZonePercent}% of their student population lives in the bus zone, and {this.state.walkZonePercent}% live in the walk zone. Bell times are {this.state.amBell} and {this.state.pmBell}. The school has a {this.state.specialPrograms}.
@@ -56,12 +56,18 @@ export class SchoolProfile extends React.Component {
       }
     }
     let cardRender = completed.map(program =>{
+      let description = null;
+      if (program.hasOwnProperty('customDesc') && program.customDesc !== ""){
+        description = program.customDesc;
+      } else if (program.hasOwnProperty('desc')) {
+        description = program.desc;
+      }
       return <>
         <div className="card" style={{width: 18 + 'rem'}}>
           <img src="..." className="card-img-top" alt="..."></img>
           <div className="card-body">
             <h5 className="card-title">{program.name}</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p className="card-text">{description}</p>
             <a href="#" className="btn btn-primary">Go somewhere</a>
           </div>
         </div>
