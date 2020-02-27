@@ -32,66 +32,82 @@ class App extends React.Component {
         if (firebase.schoolProfiles.hasOwnProperty(keys[i])){
           // group firebase data fetch into appropriate objects
           let initialConsultation = {
+            "name": "Initial Consultation",
             "completed": firebase.schoolProfiles[currentKey].initialConsultation,
             "date": firebase.schoolProfiles[currentKey].initialConsultationDate
           }
           let actionPlan = {
+            "name": 'Action Plan',
             "completed": firebase.schoolProfiles[currentKey].actionPlan,
             "URL": firebase.schoolProfiles[currentKey].actionPlanUrl
           }
           let familySurvey = {
+            'name': 'Family Survey',
             "completed": firebase.schoolProfiles[currentKey].familySurvey,
             "infographicURL": firebase.schoolProfiles[currentKey].familySurveyInfoUrl
           }
           let handsUpSurvey = {
+            'name': 'Hands Up Survey',
             "completed": firebase.schoolProfiles[currentKey].handsUpSurvey
           }
           let stpCommittee = {
+            'name': 'STP Committee',
             "completed": firebase.schoolProfiles[currentKey].stpCommittee
           }
           let trafficObservation = {
+            'name': 'Traffic Observation',
             'completed': firebase.schoolProfiles[currentKey].trafficObservation
           }
           let iWalkDay = {
+            'name': 'iWalk Day',
             'completed': firebase.schoolProfiles[currentKey].iWalkDay,
             'date': firebase.schoolProfiles[currentKey].iWalkDayDate
           }
           let winterWalkDay = {
+            'name': 'Winter Walk Day',
             'completed': firebase.schoolProfiles[currentKey].winterWalkDay,
             'date': firebase.schoolProfiles[currentKey].winterWalkDayDate
           }
           let aWalkInTheirSneakers = {
+            'name': 'A Walk In Their Sneakers',
             'completed': firebase.schoolProfiles[currentKey].aWalkInTheirSneakers,
             'date': firebase.schoolProfiles[currentKey].aWalkInTheirSneakersDate
           }
           let sidewalkSmarts = {
+            'name': 'Sidewalk Smarts',
             'completed': firebase.schoolProfiles[currentKey].sidewalkSmarts,
             'date': firebase.schoolProfiles[currentKey].sidewalkSmartsDate,
             'count': firebase.schoolProfiles[currentKey].sidewalkSmartsCount
           }
           let trailblazers = {
+            'name': 'Trailblazers',
             'completed': firebase.schoolProfiles[currentKey].trailblazers,
             'date': firebase.schoolProfiles[currentKey].trailblazersDate,
             'count': firebase.schoolProfiles[currentKey].trailblazersCount,
             'routes': firebase.schoolProfiles[currentKey].trailblazersRoutes
           }
           let driveTo5 = {
+            'name': 'Drive To 5',
             'completed': firebase.schoolProfiles[currentKey].driveTo5,
             'locations': firebase.schoolProfiles[currentKey].driveTo5Locations
           }
           let parkingMap = {
+            'name': 'Parking Map',
             'completed': firebase.schoolProfiles[currentKey].parkingMap,
             'URL': firebase.schoolProfiles[currentKey].parkingMapUrl
           }
           let walkingSchoolBus = {
+            'name': 'Walking School Bus',
             'completed': firebase.schoolProfiles[currentKey].walkingSchoolBus,
             'count': firebase.schoolProfiles[currentKey].walkingSchoolBusCount
           }
           let cyclingIntoTheFuture = {
+            'name': 'Cycling Into The Future',
             'completed': firebase.schoolProfiles[currentKey].cyclingIntoTheFuture,
             'date': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDate
           }
           let standingFootPatrol = {
+            'name': 'CAA Standing Foot Patrol',
             'completed': firebase.schoolProfiles[currentKey].standingFootPatrol
           }
           // group stp intervention data into proper programs
