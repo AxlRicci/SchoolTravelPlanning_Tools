@@ -46,7 +46,7 @@ export class SchoolProfile extends React.Component {
     </>
   }
 
-  //TODO: find out which programs are completed at a each school. add objects to list and render out cards.
+  // find out which programs are completed at a each school and render out cards with either custom or standard descriptions
   programCards() {
     let completed = [];
     let programs = Object.keys(this.state.stpInterventions);

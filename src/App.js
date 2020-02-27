@@ -44,19 +44,22 @@ class App extends React.Component {
           let familySurvey = {
             'name': 'Family Survey',
             "completed": firebase.schoolProfiles[currentKey].familySurvey,
-            "infographicURL": firebase.schoolProfiles[currentKey].familySurveyInfoUrl
+            "URL": firebase.schoolProfiles[currentKey].familySurveyInfoUrl
           }
           let handsUpSurvey = {
             'name': 'Hands Up Survey',
-            "completed": firebase.schoolProfiles[currentKey].handsUpSurvey
+            "completed": firebase.schoolProfiles[currentKey].handsUpSurvey,
+            'URL': firebase.schoolProfiles[currentKey].handsUpSurveyInfoUrl
           }
           let stpCommittee = {
             'name': 'STP Committee',
-            "completed": firebase.schoolProfiles[currentKey].stpCommittee
+            "completed": firebase.schoolProfiles[currentKey].stpCommittee,
+            'URL': firebase.schoolProfiles[currentKey].stpCommitteeUrl
           }
           let trafficObservation = {
             'name': 'Traffic Observation',
-            'completed': firebase.schoolProfiles[currentKey].trafficObservation
+            'completed': firebase.schoolProfiles[currentKey].trafficObservation,
+            'date': firebase.schoolProfiles[currentKey].trafficObservationDate
           }
           let iWalkDay = {
             'name': 'iWalk Day',
@@ -68,51 +71,70 @@ class App extends React.Component {
           let winterWalkDay = {
             'name': 'Winter Walk Day',
             'completed': firebase.schoolProfiles[currentKey].winterWalkDay,
-            'date': firebase.schoolProfiles[currentKey].winterWalkDayDate
+            'date': firebase.schoolProfiles[currentKey].winterWalkDayDate,
+            'desc': firebase.schoolProfiles[currentKey].winterWalkDayDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].winterWalkDayCustomDesc
           }
           let aWalkInTheirSneakers = {
             'name': 'A Walk In Their Sneakers',
             'completed': firebase.schoolProfiles[currentKey].aWalkInTheirSneakers,
-            'date': firebase.schoolProfiles[currentKey].aWalkInTheirSneakersDate
+            'date': firebase.schoolProfiles[currentKey].aWalkInTheirSneakersDate,
+            'desc': firebase.schoolProfiles[currentKey].aWalkInTheirSneakersDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].aWalkInTheirSneakersCustomDesc
           }
           let sidewalkSmarts = {
             'name': 'Sidewalk Smarts',
             'completed': firebase.schoolProfiles[currentKey].sidewalkSmarts,
             'date': firebase.schoolProfiles[currentKey].sidewalkSmartsDate,
-            'count': firebase.schoolProfiles[currentKey].sidewalkSmartsCount
+            'count': firebase.schoolProfiles[currentKey].sidewalkSmartsCount,
+            'desc': firebase.schoolProfiles[currentKey].sidewalkSmartsDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].sidewalkSmartsCustomDesc
           }
           let trailblazers = {
             'name': 'Trailblazers',
             'completed': firebase.schoolProfiles[currentKey].trailblazers,
             'date': firebase.schoolProfiles[currentKey].trailblazersDate,
             'count': firebase.schoolProfiles[currentKey].trailblazersCount,
-            'routes': firebase.schoolProfiles[currentKey].trailblazersRoutes
+            'URL': firebase.schoolProfiles[currentKey].trailblazersRouteMapUrl,
+            'desc': firebase.schoolProfiles[currentKey].trailblazersDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].trailblazersCustomDesc
           }
           let driveTo5 = {
             'name': 'Drive To 5',
             'completed': firebase.schoolProfiles[currentKey].driveTo5,
-            'locations': firebase.schoolProfiles[currentKey].driveTo5Locations
+            'locations': firebase.schoolProfiles[currentKey].driveTo5Locations,
+            'desc': firebase.schoolProfiles[currentKey].driveTo5Desc,
+            'customDesc': firebase.schoolProfiles[currentKey].driveTo5CustomDesc
           }
           let parkingMap = {
             'name': 'Parking Map',
             'completed': firebase.schoolProfiles[currentKey].parkingMap,
-            'URL': firebase.schoolProfiles[currentKey].parkingMapUrl
+            'URL': firebase.schoolProfiles[currentKey].parkingMapUrl,
+            'desc': firebase.schoolProfiles[currentKey].parkingMapDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].parkingMapCustomDesc
           }
           let walkingSchoolBus = {
             'name': 'Walking School Bus',
             'completed': firebase.schoolProfiles[currentKey].walkingSchoolBus,
-            'count': firebase.schoolProfiles[currentKey].walkingSchoolBusCount
+            'count': firebase.schoolProfiles[currentKey].walkingSchoolBusCount,
+            'URL': firebase.schoolProfiles[currentKey].walkingSchoolBusRouteMapUrl,
+            'desc': firebase.schoolProfiles[currentKey].walkingSchoolBusDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].walkingSchoolBusCustomDesc
           }
           let cyclingIntoTheFuture = {
             'name': 'Cycling Into The Future',
             'completed': firebase.schoolProfiles[currentKey].cyclingIntoTheFuture,
             'date': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDate,
-            'desc': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDesc
+            'count': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureCount,
+            'desc': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].cyclingIntoTheFutureCustomDesc
           }
           let standingFootPatrol = {
             'name': 'CAA Standing Foot Patrol',
             'completed': firebase.schoolProfiles[currentKey].standingFootPatrol,
-            'desc': firebase.supportPrograms['Standing Foot Patrol'].programDescription
+            'count': firebase.schoolProfiles[currentKey].standingFootPatrolCount,
+            'desc': firebase.schoolProfiles[currentKey].standingFootPatrolDesc,
+            'customDesc': firebase.schoolProfiles[currentKey].standingFootPatrolCustomDesc
           }
           // group stp intervention data into proper programs
           let stpInterventions = {
@@ -159,8 +181,7 @@ class App extends React.Component {
             'parkingStatus': firebase.schoolProfiles[currentKey].parkingStatus,
             'parkingLocation': firebase.schoolProfiles[currentKey].parkingLocation,
             'pedestrianInfrastructureDesc': firebase.schoolProfiles[currentKey].pedestrianInfrastructureDesc,
-            'stpInterventions': stpInterventions,
-            'stpInterventionDescriptions': firebase.supportPrograms
+            'stpInterventions': stpInterventions
           }
           state[[currentKey]] = data 
         }
