@@ -57,18 +57,30 @@ export class SchoolProfile extends React.Component {
     }
     let cardRender = completed.map(program =>{
       let description = null;
+      let url = null;
+      // determine if custom description should be used.
       if (program.hasOwnProperty('customDesc') && program.customDesc !== ""){
         description = program.customDesc;
       } else if (program.hasOwnProperty('desc')) {
         description = program.desc;
       }
+      // add button for programs with link to additional files/folders.
+      if (program.hasOwnProperty('URL')) {
+        url = <a href={program.URL} className="btn btn-primary">More Info</a>;
+      }
       return <>
-        <div className="card" style={{width: 18 + 'rem'}}>
-          <img src="..." className="card-img-top" alt="..."></img>
-          <div className="card-body">
-            <h5 className="card-title">{program.name}</h5>
-            <p className="card-text">{description}</p>
-            <a href="#" className="btn btn-primary">Go somewhere</a>
+        <div className="card mx-auto" style={{width: 95 + 'vw', margin: 10 + 'px'}}>
+          <div className="row no-gutters">
+            <div className="col-md-2">
+              <img src={program.imgURL} className="card-img"></img>
+            </div>
+            <div className="col-md-10">
+              <div className="card-body">
+                <h5 className="card-title">{program.name}</h5>
+                <p className="card-text">{description}</p>
+                {url}
+              </div>
+            </div>
           </div>
         </div>
       </>
