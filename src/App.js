@@ -1,5 +1,6 @@
 import React from 'react';
-import {fetchDatabase} from './components/FirebaseConnect';
+//import {fetchDatabase} from './components/FirebaseConnect';
+import {getData} from './components/getData';
 import { Nav } from './components/Nav';
 import { Home } from './components/Home';
 import { SchoolList } from './components/SchoolList';
@@ -16,8 +17,9 @@ class App extends React.Component {
     this.state = null;
   }
 
-  componentDidMount() {
-    this.setState(fetchDatabase());
+  async componentDidMount() {
+    const response = await getData();
+    console.log(response);
   }
 
   render () {

@@ -1,10 +1,8 @@
 import * as firebase from 'firebase';
 
-const fetchDatabase = function() {
+const fetchDatabase = async function() {
   let ref = firebase.database().ref ('/1jXrk6uXX580gHV1TZAHoWrH_UzkJnkLE3TdAGR4qD0s/');
-  let state = {
-    data: {}
-  };
+  let state = {};
   ref.on('value', snap => {
     const firebase = snap.val();
     let keys = Object.keys(firebase.schoolProfiles);
@@ -181,14 +179,14 @@ const fetchDatabase = function() {
           'stpInterventions': stpInterventions,
           'stpPrograms': firebase.supportPrograms
         }
-        state.data[[currentKey]] = data 
+        state[[currentKey]] = data 
       }
     }
     console.log(state);
   });
-  console.log(state.data);
+  console.log(state);
   console.log('Data Retrieved');
-  return state.data;
+  return state;
 };
 
 export { fetchDatabase };
